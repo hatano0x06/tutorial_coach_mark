@@ -98,47 +98,6 @@ class AnimatedFocusLightState extends State<AnimatedFocusLight>
 
   @override
   Widget build(BuildContext context) {
-    
-    List<Widget> Function() bodyListFunc = (){
-      List<Widget> bodyList = [
-        Container(
-          width: double.maxFinite,
-          height: double.maxFinite,
-          child: CustomPaint(
-            painter: _getPainter(_targetFocus),
-          ),
-        )
-      ];
-      
-      print(" --- ");
-      print(_targetPosition!.size);
-      print(_targetPosition!.size == Size.zero);
-
-      if( _targetPosition != null && _targetPosition!.size == Size.zero ) return bodyList;
-      
-      return bodyList..add(
-        Positioned(
-          left: (_targetPosition?.offset.dx ?? 0) -
-              _getPaddingFocus() * 2,
-          top: (_targetPosition?.offset.dy ?? 0) -
-              _getPaddingFocus() * 2,
-          child: InkWell(
-            borderRadius: _betBorderRadiusTarget(),
-            onTap: _targetFocus.enableTargetTab
-                ? () => _tapHandler(targetTap: true)
-                : null,
-            child: Container(
-              color: Colors.transparent,
-              width: (_targetPosition?.size.width ?? 0) +
-                  _getPaddingFocus() * 4,
-              height: (_targetPosition?.size.height ?? 0) +
-                  _getPaddingFocus() * 4,
-            ),
-          ),
-        )
-      );         
-    };
-   
        
     return InkWell(
       onTap: _targetFocus.enableOverlayTab
@@ -155,7 +114,34 @@ class AnimatedFocusLightState extends State<AnimatedFocusLight>
                 _progressAnimated = _tweenPulse.value;
               }
               return Stack(
-                children: bodyListFunc(),
+                children: <Widget>[
+                  Container(
+                    width: double.maxFinite,
+                    height: double.maxFinite,
+                    child: CustomPaint(
+                      painter: _getPainter(_targetFocus),
+                    ),
+                  ),
+                  Positioned(
+                    left: (_targetPosition?.offset.dx ?? 0) -
+                        _getPaddingFocus() * 2,
+                    top: (_targetPosition?.offset.dy ?? 0) -
+                        _getPaddingFocus() * 2,
+                    child: InkWell(
+                      borderRadius: _betBorderRadiusTarget(),
+                      onTap: _targetFocus.enableTargetTab
+                          ? () => _tapHandler(targetTap: true)
+                          : null,
+                      child: Container(
+                        color: Colors.transparent,
+                        width: (_targetPosition?.size.width ?? 0) +
+                            _getPaddingFocus() * 4,
+                        height: (_targetPosition?.size.height ?? 0) +
+                            _getPaddingFocus() * 4,
+                      ),
+                    ),
+                  )
+                ],
               );
             },
           );
@@ -298,6 +284,11 @@ class AnimatedFocusLightState extends State<AnimatedFocusLight>
   }
 
   CustomPainter _getPainter(TargetFocus? target) {
+    if( _targetPosition != null && _targetPosition!.size == Size.zero ) return NonLightPaint(
+      colorShadow: target?.color ?? widget.colorShadow,
+      opacityShadow: widget.opacityShadow,
+    );
+    
     if (target?.shape == ShapeLightFocus.RRect) {
       return LightPaintRect(
         colorShadow: target?.color ?? widget.colorShadow,
