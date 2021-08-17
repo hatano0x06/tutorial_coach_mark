@@ -284,7 +284,7 @@ class AnimatedFocusLightState extends State<AnimatedFocusLight>
   }
 
   CustomPainter _getPainter(TargetFocus? target) {
-    if( _targetPosition != null && _targetPosition!.size == Size.zero ) return NonLightPaint(
+    return NonLightPaint(
       colorShadow: target?.color ?? widget.colorShadow,
       opacityShadow: widget.opacityShadow,
     );
