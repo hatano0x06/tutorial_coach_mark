@@ -86,7 +86,9 @@ class NonLightPaint extends CustomPainter {
       circleHole,
       Paint()
         ..style = PaintingStyle.fill
-        ..color = colorShadow.withOpacity(opacityShadow),
+        ..color = colorShadow,
+
+      //         ..color = colorShadow.withOpacity(opacityShadow),
     );
   }
 
