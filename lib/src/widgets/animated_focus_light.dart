@@ -122,25 +122,25 @@ class AnimatedFocusLightState extends State<AnimatedFocusLight>
                       painter: _getPainter(_targetFocus),
                     ),
                   ),
-                  Positioned(
-                    left: (_targetPosition?.offset.dx ?? 0) -
-                        _getPaddingFocus() * 2,
-                    top: (_targetPosition?.offset.dy ?? 0) -
-                        _getPaddingFocus() * 2,
-                    child: InkWell(
-                      borderRadius: _betBorderRadiusTarget(),
-                      onTap: _targetFocus.enableTargetTab
-                          ? () => _tapHandler(targetTap: true)
-                          : null,
-                      child: Container(
-                        color: Colors.transparent,
-                        width: (_targetPosition?.size.width ?? 0) +
-                            _getPaddingFocus() * 4,
-                        height: (_targetPosition?.size.height ?? 0) +
-                            _getPaddingFocus() * 4,
-                      ),
-                    ),
-                  )
+//                   Positioned(
+//                     left: (_targetPosition?.offset.dx ?? 0) -
+//                         _getPaddingFocus() * 2,
+//                     top: (_targetPosition?.offset.dy ?? 0) -
+//                         _getPaddingFocus() * 2,
+//                     child: InkWell(
+//                       borderRadius: _betBorderRadiusTarget(),
+//                       onTap: _targetFocus.enableTargetTab
+//                           ? () => _tapHandler(targetTap: true)
+//                           : null,
+//                       child: Container(
+//                         color: Colors.transparent,
+//                         width: (_targetPosition?.size.width ?? 0) +
+//                             _getPaddingFocus() * 4,
+//                         height: (_targetPosition?.size.height ?? 0) +
+//                             _getPaddingFocus() * 4,
+//                       ),
+//                     ),
+//                   )
                 ],
               );
             },
