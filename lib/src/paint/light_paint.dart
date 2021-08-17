@@ -86,14 +86,12 @@ class NonLightPaint extends CustomPainter {
       circleHole,
       Paint()
         ..style = PaintingStyle.fill
-        ..color = colorShadow,
-
-      //         ..color = colorShadow.withOpacity(opacityShadow),
+        ..color = colorShadow.withOpacity(opacityShadow),
     );
   }
 
   @override
-  bool shouldRepaint(LightPaint oldDelegate) {
+  bool shouldRepaint(NonLightPaint oldDelegate) {
     return true;
   }
 }
