@@ -115,13 +115,13 @@ class AnimatedFocusLightState extends State<AnimatedFocusLight>
               }
               return Stack(
                 children: <Widget>[
-                  Container(
-                    width: double.maxFinite,
-                    height: double.maxFinite,
-                    child: CustomPaint(
-                      painter: _getPainter(_targetFocus),
-                    ),
-                  ),
+//                   Container(
+//                     width: double.maxFinite,
+//                     height: double.maxFinite,
+//                     child: CustomPaint(
+//                       painter: _getPainter(_targetFocus),
+//                     ),
+//                   ),
 //                   Positioned(
 //                     left: (_targetPosition?.offset.dx ?? 0) -
 //                         _getPaddingFocus() * 2,
