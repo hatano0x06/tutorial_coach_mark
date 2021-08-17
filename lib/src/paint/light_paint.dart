@@ -62,3 +62,36 @@ class LightPaint extends CustomPainter {
     return oldDelegate.progress != progress;
   }
 }
+
+
+class NonLightPaint extends CustomPainter {
+  final Color colorShadow;
+  final double opacityShadow;
+
+  NonLightPaint({
+    this.colorShadow = Colors.black,
+    this.opacityShadow = 0.8,
+  }) : assert(opacityShadow >= 0 && opacityShadow <= 1);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final circleHole = Path()
+      ..lineTo(0, 0)
+      ..lineTo(0, size.height)
+      ..lineTo(size.width, size.height)
+      ..lineTo(size.width, 0)
+      ..close();
+
+    canvas.drawPath(
+      circleHole,
+      Paint()
+        ..style = PaintingStyle.fill
+        ..color = colorShadow.withOpacity(opacityShadow),
+    );
+  }
+
+  @override
+  bool shouldRepaint(LightPaint oldDelegate) {
+    return true;
+  }
+}
