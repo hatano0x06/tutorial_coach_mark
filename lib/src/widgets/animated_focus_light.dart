@@ -109,6 +109,10 @@ class AnimatedFocusLightState extends State<AnimatedFocusLight>
           ),
         )
       ];
+      
+      print(" --- ");
+      print(_targetPosition!.size);
+      print(_targetPosition!.size == Size.zero);
 
       if( _targetPosition != null && _targetPosition!.size == Size.zero ) return bodyList;
       
