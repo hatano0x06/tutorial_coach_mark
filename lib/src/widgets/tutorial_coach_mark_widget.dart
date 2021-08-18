@@ -198,8 +198,11 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
       );
     }).toList();
 
-    return Stack(
-      children: children,
+    return InkWell(
+      onTap: next,
+      child: Stack(
+        children: children,
+      ),
     );
   }
 
