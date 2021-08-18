@@ -188,21 +188,21 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
         left: left,
         child: Container(
           width: weight,
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: i.builder != null
-                ? i.builder?.call(context, this)
-                : (i.child ?? SizedBox.shrink()),
+          child: InkWell(
+            onTap: next,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: i.builder != null
+                  ? i.builder?.call(context, this)
+                  : (i.child ?? SizedBox.shrink()),
+            ),
           ),
         ),
       );
     }).toList();
 
-    return InkWell(
-      onTap: next,
-      child: Stack(
-        children: children,
-      ),
+    return Stack(
+      children: children,
     );
   }
 
