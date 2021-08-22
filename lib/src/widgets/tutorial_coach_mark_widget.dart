@@ -186,7 +186,7 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
                 (MediaQuery.of(context).size.height - positioned.dy);
 
             double minWidth = math.min(MediaQuery.of(context).size.width*2/3, (MediaQuery.of(context).size.width - positioned.dx + haloWidth) * 2);
-            weight = minWidth < 0 ? MediaQuery.of(context).size.width*2/3 : minWidth;
+            weight = minWidth;
           }
           break;
         case ContentAlign.custom:
