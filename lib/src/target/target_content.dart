@@ -15,7 +15,7 @@ class CustomTargetContentPosition {
   }
 }
 
-enum ContentAlign { top, bottom, left, right, custom }
+enum ContentAlign { top, bottom, left, right, rightTop, custom }
 
 typedef TargetContentBuilder = Widget Function(
   BuildContext context,
