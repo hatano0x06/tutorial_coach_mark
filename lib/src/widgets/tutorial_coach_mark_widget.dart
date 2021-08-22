@@ -136,6 +136,7 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
     double? top;
     double? bottom;
     double? left;
+    double? right;
 
     children = currentTarget!.contents!.map<Widget>((i) {
       switch (i.align) {
@@ -143,6 +144,7 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
           {
             weight = MediaQuery.of(context).size.width;
             left = 0;
+            right = null;
             top = positioned.dy + haloHeight;
             bottom = null;
           }
@@ -152,6 +154,7 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
             weight = MediaQuery.of(context).size.width;
             left = 0;
             top = null;
+            right = null;
             bottom = haloHeight +
                 (MediaQuery.of(context).size.height - positioned.dy);
           }
@@ -162,6 +165,7 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
             left = 0;
             top = positioned.dy - target.size.height / 2 - haloHeight;
             bottom = null;
+            right = null;
           }
           break;
         case ContentAlign.right:
@@ -174,11 +178,12 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
           break;
         case ContentAlign.rightTop:
           {
-            left = positioned.dx + haloWidth;
+            left = null;
             top = null;
+            right = 0;
             bottom = haloHeight +
                 (MediaQuery.of(context).size.height - positioned.dy);
-            weight = MediaQuery.of(context).size.width - left!;
+            weight = ((MediaQuery.of(context).size.width - positioned.dx) > MediaQuery.of(context).size.width/2) ? (MediaQuery.of(context).size.width - positioned.dx) : MediaQuery.of(context).size.width/2;
           }
           break;
         case ContentAlign.custom:
@@ -195,6 +200,7 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
         top: top,
         bottom: bottom,
         left: left,
+        right: right,
         child: Container(
           width: weight,
           child: InkWell(
