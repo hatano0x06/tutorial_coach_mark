@@ -183,7 +183,7 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
             right = 0;
             bottom = haloHeight +
                 (MediaQuery.of(context).size.height - positioned.dy);
-            weight = ((MediaQuery.of(context).size.width - positioned.dx) > MediaQuery.of(context).size.width/2) ? (MediaQuery.of(context).size.width - positioned.dx) : MediaQuery.of(context).size.width/2;
+            weight = ((MediaQuery.of(context).size.width - positioned.dx - haloWidth) > MediaQuery.of(context).size.width/2) ? (MediaQuery.of(context).size.width - positioned.dx - haloWidth) : MediaQuery.of(context).size.width/2;
           }
           break;
         case ContentAlign.custom:
