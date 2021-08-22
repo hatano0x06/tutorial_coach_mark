@@ -3,6 +3,7 @@ import 'package:tutorial_coach_mark/src/target/target_content.dart';
 import 'package:tutorial_coach_mark/src/target/target_focus.dart';
 import 'package:tutorial_coach_mark/src/util.dart';
 import 'package:tutorial_coach_mark/src/widgets/animated_focus_light.dart';
+import 'dart:math' as math;
 
 class TutorialCoachMarkWidget extends StatefulWidget {
   const TutorialCoachMarkWidget({
@@ -183,7 +184,9 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
             right = 0;
             bottom = haloHeight +
                 (MediaQuery.of(context).size.height - positioned.dy);
-            weight = ((MediaQuery.of(context).size.width - positioned.dx - haloWidth) > MediaQuery.of(context).size.width/2) ? (MediaQuery.of(context).size.width - positioned.dx - haloWidth) : MediaQuery.of(context).size.width/2;
+
+            double minWidth = math.min(MediaQuery.of(context).size.width*2/3, (MediaQuery.of(context).size.width - positioned.dx + haloWidth) * 2);
+            weight = minWidth < 0 ? MediaQuery.of(context).size.width*2/3 : minWidth;
           }
           break;
         case ContentAlign.custom:
